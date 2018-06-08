@@ -1,0 +1,7 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="tamanho_nome_cidade">50dp</dimen>
+    <dimen name="altura_nome_cidade">50dp</dimen>
+    <dimen name="image_side_length">50dp</dimen>
+    <dimen name="tamanho_fonte">24sp</dimen>
+</resources>

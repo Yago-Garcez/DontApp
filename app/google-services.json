@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "485558193739",
+    "firebase_url": "https://meteorologia-8c870.firebaseio.com",
+    "project_id": "meteorologia-8c870",
+    "storage_bucket": "meteorologia-8c870.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:485558193739:android:915fb6b279491b40",
+        "android_client_info": {
+          "package_name": "com.example.yagog.meteorologia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "485558193739-dgd0fuepd2ptg1amk6sdn5iuqsb3k08d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.yagog.meteorologia",
+            "certificate_hash": "910ebfb9583e462f21d9e50c31499c5d6fcd7570"
+          }
+        },
+        {
+          "client_id": "485558193739-f6dct64q352mlj704q5u45gu9ppinb37.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvxKHanjLlKdWewKVBUssDGBrXukBItu4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "485558193739-f6dct64q352mlj704q5u45gu9ppinb37.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
