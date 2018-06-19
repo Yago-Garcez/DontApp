@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">DontApp</string>
+    <string name="title_text">Text Mode</string>
+    <string name="title_picture">Picture Mode</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hint_text">Type a tag</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="hint_multilinetext">Type something</string>
+</resources>
