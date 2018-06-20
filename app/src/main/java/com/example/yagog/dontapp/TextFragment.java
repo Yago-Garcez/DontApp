@@ -10,6 +10,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
@@ -62,9 +64,8 @@ public class TextFragment extends Fragment {
         contentEditText = v.findViewById(R.id.contentEditText);
         currentTagTextView = v.findViewById(R.id.currentTagTextView);
         searchTagFab = (FloatingActionButton) v.findViewById(R.id.searchTagFab);
-        //final TextMode aux = new TextMode();
         final TextMode textMode = new TextMode();
-        textModeCollection = new Stack<TextMode>();
+        textModeCollection = new LinkedList<TextMode>();
         tagsReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -85,50 +86,34 @@ public class TextFragment extends Fragment {
         searchTagFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String aux = "";
                 textMode.setTag(tagEditText.getEditableText().toString());
                 currentTagTextView.setText(textMode.getTag());
                 tagEditText.setText("");
-                //Verificar se há conteúdo, se tiver, apagar.
-                if(!contentEditText.getEditableText().toString().equals(""))
-                    contentEditText.setText("");
                 //Buscando a tag no Firebase (Se existir)
                 for(TextMode tagOnSearch : textModeCollection){
                     if(textMode.getTag().equals(tagOnSearch.getTag().toString())){
                         tagFound = true;
+                        aux = tagOnSearch.getTag();
                         String key = tagOnSearch.getKey();
                         textMode.setKey(key);
                         textMode.setContent(tagOnSearch.getContent());
                     }
                 }
                 //Caso não exista, criar o registro
-                if (!tagFound){
+                if (!tagFound || !textMode.getTag().equals(aux)){
                     tagFound = false;
                     String key = tagsReference.push().getKey();
                     textMode.setKey(key);
                     textMode.setContent(contentEditText.getEditableText().toString());
                     tagsReference.child(textMode.getKey()).setValue(textMode);
+                    contentEditText.setText("");
                 }
-                //contentEditText.setText(textMode.getContent());
+                contentEditText.setText(textMode.getContent());
                 //Toast.makeText(MainActivity.this, "Camera Clicked!", Toast.LENGTH_SHORT).show();
             }
         });
-        //Tentando de tudo!! Desconsiderar trecho abaixo.
-        /*contentEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if(!hasFocus)
-                    aux.setKey(textMode.getKey());
-                    aux.setTag(textMode.getTag());
-                    aux.setContent(textMode.getContent());
-                    textMode.setTag(null);
-                    textMode.setContent(null);
-                    textMode.setKey(null);
-                    contentEditText.setText("");
-                    textMode.setKey(aux.getKey());
-                    textMode.setTag(aux.getTag());
-                    textMode.setContent(aux.getContent());
-            }
-        });*/
+
         contentEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -143,11 +128,6 @@ public class TextFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                //textMode.setContent(s.toString());
-                //textMode.setContent(contentEditText.getEditableText().toString());
-                //tagsReference.child(textMode.getKey()).setValue(textMode);
-
-
             }
         });
 
