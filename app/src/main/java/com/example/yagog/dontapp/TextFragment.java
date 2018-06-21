@@ -110,7 +110,6 @@ public class TextFragment extends Fragment {
                     contentEditText.setText("");
                 }
                 contentEditText.setText(textMode.getContent());
-                //Toast.makeText(MainActivity.this, "Camera Clicked!", Toast.LENGTH_SHORT).show();
             }
         });
 
