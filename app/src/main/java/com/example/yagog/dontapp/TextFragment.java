@@ -129,7 +129,6 @@ public class TextFragment extends Fragment {
             public void afterTextChanged(Editable s) {
             }
         });
-
         return v;
     }
 }
